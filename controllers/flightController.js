@@ -26,7 +26,9 @@ module.exports.new = (req, res) => {
     console.log(departsDate)
   res.render("New",{departsDate})
 }
-
+module.exports.newDes = (req, res) => {
+  res.render("Newdes",{id:req.params.id})
+}
 
 // POST /flights
 module.exports.create = async (req, res) => {
@@ -39,10 +41,26 @@ module.exports.create = async (req, res) => {
     }
 }
 
+module.exports.createDes = async (req, res) => {
+    console.log(req.params.id,"kiweeeeeeeeewiiri")
+    try {
+       const flight= await Flight.findById(req.params.id)
+       flight.destinations.push(req.body)
+       await Flight.findByIdAndUpdate(req.params.id,flight)
+        res.redirect(`/flight/${req.params.id}`)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 //  GET /flights/:id
 module.exports.show = async (req, res) => {
-
+     try {
+        let flight=await Flight.findById(req.params.id)
+        res.render("Show",{flight})
+     } catch (error) {
+        
+     }
 }
 
 

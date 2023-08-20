@@ -13,6 +13,7 @@ router.get('/', flightController.index)
 
 // "new" route
 router.get('/new', flightController.new)
+router.get('/newDes/:id', flightController.newDes)
 
 // // "destroy" route
 // router.delete('/:indexOfFlight', flightController.destroy)
@@ -22,11 +23,12 @@ router.get('/new', flightController.new)
 
 // "create" route
 router.post('/', flightController.create)
+router.post('/:id', flightController.createDes)
 
 // // "edit" route
 // router.get('/:id/edit', flightController.edit)
 
-// // "show" route      //   localhost:8080/flight/:indexOfFlight
-// router.get('/:id', flightController.show)
+// "show" route      //   localhost:8080/flight/:indexOfFlight
+router.get('/:id', flightController.show)
 
 module.exports = router

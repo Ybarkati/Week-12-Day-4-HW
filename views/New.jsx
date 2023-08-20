@@ -2,6 +2,7 @@ import React from 'react'
 
 function New({departsDate}) {
     const AirLines=["American", "Southwest","United"]
+    const airports=['SAN' ,'AUS', 'DAL', 'LAX',  'SEA']
     return (
         <div>
             <h1>Create new flight</h1>
@@ -13,6 +14,12 @@ function New({departsDate}) {
             <form action="/flight" method='POST'>
                 <select name="airline" id='airline' >
                     {AirLines.map((element)=>
+                         <option  >{element}</option>
+                    )}
+                </select>
+                <br/><br/>
+                <select name="airport" id='airport' >
+                    {airports.map((element)=>
                          <option  >{element}</option>
                     )}
                 </select>
